@@ -16,4 +16,4 @@ This project is a comprehensive exercise in data engineering, financial analytic
 
 ## Dashboard Link
 
-[https://moonlight-solar-analysis-zax49rn9ubhd7mmh9tuvbe.streamlit.app/](Live Link)
+[moon light dashboard live link](https://moonlight-solar-analysis-zax49rn9ubhd7mmh9tuvbe.streamlit.app/)
