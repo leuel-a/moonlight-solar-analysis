@@ -6,10 +6,10 @@ Moonlight Solar Analysis is a data analysis project undertaken as part of the 10
 
 Key Components:
 
-    Challenge Overview: Focus on exploring and analyzing solar farm data from Benin, Sierra Leone, and Togo to evaluate candidates for a 12-week training program.
-    Business Objective: Develop a strategic report based on the analysis, recommending high-potential regions for solar installation.
-    Dataset Overview: Includes solar radiation, temperature, humidity, pressure, precipitation, wind speed, and direction data.
-    Week's Topics Covered: Python programming, GitHub commands, data understanding and exploration, CI/CD, and dashboard development using Streamlit.
-    Deliverables: Git and GitHub setup, exploratory data analysis, statistical analysis, and a Streamlit dashboard.
+1. Challenge Overview: Focus on exploring and analyzing solar farm data from Benin, Sierra Leone, and Togo to evaluate candidates for a 12-week training program.
+2. Business Objective: Develop a strategic report based on the analysis, recommending high-potential regions for solar installation
+3. Dataset Overview: Includes solar radiation, temperature, humidity, pressure, precipitation, wind speed, and direction data
+4. Week's Topics Covered: Python programming, GitHub commands, data understanding and exploration, CI/CD, and dashboard development using Streamlit
+5. Deliverables: Git and GitHub setup, exploratory data analysis, statistical analysis, and a Streamlit dashboard.
 
 This project is a comprehensive exercise in data engineering, financial analytics, and machine learning engineering, aimed at preparing participants for real-world job positions.
