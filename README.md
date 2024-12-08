@@ -13,3 +13,7 @@ Key Components:
 5. Deliverables: Git and GitHub setup, exploratory data analysis, statistical analysis, and a Streamlit dashboard.
 
 This project is a comprehensive exercise in data engineering, financial analytics, and machine learning engineering, aimed at preparing participants for real-world job positions.
+
+## Dashboard Link
+
+[https://moonlight-solar-analysis-zax49rn9ubhd7mmh9tuvbe.streamlit.app/](Live Link)
