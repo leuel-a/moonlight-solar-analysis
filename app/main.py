@@ -1,8 +1,6 @@
-import numpy as np
-import pandas as pd
 import streamlit as st
 
-from utils import load_data, plot_line_chart, plot_bar_chart
+from utils import load_data, plot_line_chart, plot_bar_chart, plot_histogram
 
 # datasets file paths, in production need to use the gdrive
 BENIN = '1eAh3rWhpLyUe8xwLaRKSKNhyjU4nuhpW'
@@ -15,25 +13,27 @@ datasets = {
     'Togo Dapaong QC': TOGO,
 }
 
-SOLAR_IRRADIANCE_MEASURES = ['GHI', 'DNI', 'DHI']
-WIND_SPEED_MEASURES = ['WS', 'Wgust']
+solar_irradiance_measures = ['GHI', 'DNI', 'DHI']
+wind_speed_measures = ['WS', 'WSgust']
 
-st.title('Moon Light Solar Data Analysis')
+st.title('MoonLight Solar Data Analysis')
 
 default_index = 0
 dataset_options = [BENIN, SIERRA, TOGO]
 
 # make the user select the dataset from the list of datasets
-selected_dataset = st.selectbox('Select a dataset', options=list(datasets.keys()), index=default_index)
+selected_dataset = st.selectbox('select a dataset', options=list(datasets.keys()), index=default_index,
+                                key='dataset_selection_box')
 
-# TODO: come up with a better naming for this st.subheader('Time Series Analysis')
+st.subheader('See how the solar radiations change over time')
 st.text('Visualize with the help of a bar chart or line chart')
 
 col1, col2 = st.columns(2)
 with col1:
-    field = st.selectbox('Select a field to visualize', options=SOLAR_IRRADIANCE_MEASURES)
+    field_1 = st.selectbox('select a field to visualize', options=solar_irradiance_measures, key='field_selection_box_1')
 with col2:
-    chart_type = st.selectbox('What type of visual do you want', options=['Line Chart', 'Bar Chart'])
+    chart_type = st.selectbox('what type of visual do you want', options=['Line Chart', 'Bar Chart'],
+                              key='chart_type_selection_box')
 
 df = load_data(datasets[selected_dataset])
 monthly_average_df = df.groupby('Month').mean()
@@ -46,4 +46,15 @@ chart_functions = {
 
 chart_function = chart_functions.get(chart_type)
 if chart_function:
-    chart_function(monthly_average_df, field)
+    chart_function(monthly_average_df, field_1)
+
+st.subheader('See how the solar radiation readings are distributed')
+col1, col2 = st.columns(2)
+
+with col1:
+    field_2 = st.selectbox('select a field to visualize', options=solar_irradiance_measures, key='field_selection_box_2')
+
+with col2:
+    st.markdown('See how the values are distributed with a **Histogram**')
+
+plot_histogram(df, field_2, '')

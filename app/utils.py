@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 import streamlit as st
 import matplotlib.pyplot as plt
@@ -7,6 +8,7 @@ MONTHS = [
     'January', 'February', 'March', 'April', 'May', 'June',
     'July', 'August', 'September', 'October', 'November', 'December'
 ]
+
 
 @st.cache_data
 def load_data(file_id: str) -> pd.DataFrame:
@@ -39,6 +41,7 @@ def plot_line_chart(df: pd.DataFrame, column: str, title: str = '') -> None:
     Returns:
     None
     """
+
     # Generate a list of abbreviated month names (assumes MONTHS is defined)
     months = [month[:3] for month in MONTHS]  # Ensure MONTHS is defined in your code
 
@@ -55,6 +58,7 @@ def plot_line_chart(df: pd.DataFrame, column: str, title: str = '') -> None:
 
     # Render the figure in Streamlit
     st.pyplot(fig)
+
 
 def plot_bar_chart(df: pd.DataFrame, column: str, title: str = '') -> None:
     """
@@ -82,3 +86,39 @@ def plot_bar_chart(df: pd.DataFrame, column: str, title: str = '') -> None:
     plt.xticks(rotation=45)
 
     st.pyplot(fig)
+
+
+def plot_histogram(df: pd.DataFrame, col_name: str, title: str, num_bins: int = 20) -> None:
+    """
+    Plots a histogram for the specified column in the given DataFrame
+
+    :param df: the dataframe to use as a data source
+    :type df: pd.DataFrame
+
+    :param col_name: the name of the column to be seen in the histogram distribution
+    :type col_name: str
+
+    :param num_bins: the number of bins for the histogram, defaults to 20
+    :type num_bins: int
+
+    :param title: the title of the histogram plot
+    :type title: str
+
+    :return: Nothing
+    :rtype: None
+    """
+    fig, ax = plt.subplots(figsize=(12, 6))
+
+    min_value = df[col_name].min()
+    max_value = df[col_name].max()
+
+    bins = np.linspace(min_value, max_value, num_bins + 1)
+
+    ax.hist(df[col_name], bins=num_bins, edgecolor='black')
+    ax.set_title(title, fontsize=16)
+
+    ax.grid()
+    plt.xticks(bins)
+
+    st.pyplot(fig)
+
